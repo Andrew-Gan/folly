@@ -1,0 +1,12 @@
+services:
+  folly:
+    build: .
+    image: folly:latest
+    container_name: folly
+    dns: 8.8.8.8
+    volumes:
+     - /share/sign-ml/torch:/home/torch
+    deploy:
+      resources:
+        limits:
+          memory: 2G

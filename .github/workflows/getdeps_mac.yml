@@ -21,7 +21,7 @@ jobs:
     - name: Show disk space at start
       run: df -h
     - name: Free up disk space
-      run: sudo rm -rf /usr/local/lib/android
+      run: rm -rf /usr/local/lib/android
     - name: Show disk space after freeing up
       run: df -h
     - name: Install system deps

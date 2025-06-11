@@ -436,13 +436,11 @@ class InstallSysDepsCmd(ProjectCmdBase):
         if manager == "rpm":
             packages = sorted(set(all_packages["rpm"]))
             if packages:
-                cmd_args = ["sudo", "dnf", "install", "-y", "--skip-broken"] + packages
+                cmd_args = ["dnf", "install", "-y", "--skip-broken"] + packages
         elif manager == "deb":
             packages = sorted(set(all_packages["deb"]))
             if packages:
                 cmd_args = [
-                    "sudo",
-                    "--preserve-env=http_proxy",
                     "apt-get",
                     "install",
                     "-y",
@@ -1162,7 +1160,7 @@ jobs:
                     out.write("      run: df -h\n")
                     # remove the unused github supplied android dev tools
                     out.write("    - name: Free up disk space\n")
-                    out.write("      run: sudo rm -rf /usr/local/lib/android\n")
+                    out.write("      run: rm -rf /usr/local/lib/android\n")
                     out.write("    - name: Show disk space after freeing up\n")
                     out.write("      run: df -h\n")
             else:
@@ -1173,7 +1171,7 @@ jobs:
                 build_opts.allow_system_packages
                 and build_opts.host_type.get_package_manager()
             ):
-                sudo_arg = "sudo --preserve-env=http_proxy "
+                sudo_arg = " "
                 allow_sys_arg = " --allow-system-packages"
                 if build_opts.host_type.get_package_manager() == "deb":
                     out.write("    - name: Update system package info\n")

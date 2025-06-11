@@ -20,6 +20,7 @@
 #include <exception>
 #include <functional>
 #include <string>
+#include <cstring>
 #include <type_traits>
 #include <utility>
 
